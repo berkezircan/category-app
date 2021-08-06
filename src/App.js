@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 // Components
 import AvailableProducts from './screens/AvailableProducts';
 import Review from './screens/Review';
@@ -8,6 +10,13 @@ import './App.css';
 import 'normalize.css';
 
 function App() {
+	var [categories, setCategories] = useState([
+		{
+			name: 'Category 1',
+			index: 0,
+		},
+	]);
+
 	return (
 		<div className="App container">
 			<div className="sub-container">
@@ -15,7 +24,7 @@ function App() {
 				<Review />
 			</div>
 			<div className="sub-container">
-				<Categories />
+				<Categories categories={categories} setCategories={setCategories} />
 			</div>
 		</div>
 	);

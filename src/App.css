@@ -57,7 +57,6 @@ body {
 
 .btn {
 	border: none;
-	width: 100%;
 	padding: 0.5rem 1rem;
 	color: #fff;
 	background-color: var(--primary-color);
@@ -65,8 +64,39 @@ body {
 	cursor: pointer;
 }
 
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
 .btn:hover {
 	background-color: #0d6efd;
+}
+
+.form-control {
+	padding: 10px 0;
+}
+
+.actions {
+	display: flex;
+	justify-content: space-between;
+}
+
+.btn-disabled {
+	pointer-events: none;
+	background-color: #eee;
+	color: #6c757d;
+}
+
+.category-container {
+	width: 100%;
+	text-align: center;
+	padding: 30px;
+	color: #6c757d;
+}
+
+.category-container i {
+	display: block;
 }
 
 /* Padding */
