@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
+:root {
+	--primary-color: #007bff;
+	--secondary-color: #17a2b8;
+	--dark-color: #343a40;
+	--light-color: #ddd;
+	--danger-color: #dc3545;
+	--success-color: #28a745;
+}
+
 * {
 	box-sizing: border-box;
 	margin: 0;
@@ -17,4 +26,106 @@ body {
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
+	display: flex;
+	padding-top: 50px;
+}
+
+.sub-container {
+	width: 50%;
+	margin-right: 30px;
+}
+
+.info-container {
+	border: 1px solid var(--light-color);
+	border-radius: 5px;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.border-primary {
+	border-color: var(--primary-color);
+}
+
+.text-primary {
+	color: var(--primary-color);
+}
+
+.text-dark {
+	color: var(--dark-color);
+}
+
+.btn {
+	border: none;
+	width: 100%;
+	padding: 0.5rem 1rem;
+	color: #fff;
+	background-color: var(--primary-color);
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.btn:hover {
+	background-color: #0d6efd;
+}
+
+/* Padding */
+.p {
+	padding: 0.5rem;
+}
+.p-1 {
+	padding: 1rem;
+}
+.p-2 {
+	padding: 2rem;
+}
+.p-3 {
+	padding: 3rem;
+}
+.py {
+	padding: 0.5rem 0;
+}
+.py-1 {
+	padding: 1rem 0;
+}
+.py-2 {
+	padding: 2rem 0;
+}
+.py-3 {
+	padding: 3rem 0;
+}
+
+/* Margin */
+.m {
+	margin: 0.5rem;
+}
+.m-1 {
+	margin: 1rem;
+}
+.m-2 {
+	margin: 2rem;
+}
+.m-3 {
+	margin: 3rem;
+}
+.ml-1 {
+	margin-left: 0.5rem;
+}
+.ml-2 {
+	margin-left: 1rem;
+}
+.ml-3 {
+	margin-left: 1.5rem;
+}
+.my {
+	margin: 0.5rem 0;
+}
+.my-1 {
+	margin: 1rem 0;
+}
+.my-2 {
+	margin: 2rem 0;
+}
+.my-3 {
+	margin: 3rem 0;
 }

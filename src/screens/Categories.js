@@ -1,9 +1,11 @@
 import React from 'react';
+import Category from '../components/Category';
 
 const Categories = () => {
 	return (
 		<div>
-			<p>Categories</p>
+			<Category />
+			<button className="btn">Add Category</button>
 		</div>
 	);
 };

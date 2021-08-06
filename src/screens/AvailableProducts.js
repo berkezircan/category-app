@@ -2,8 +2,11 @@ import React from 'react';
 
 const AvailableProducts = () => {
 	return (
-		<div>
-			<p>Available Products</p>
+		<div className="info-container">
+			<p className="text-dark">
+				<i className="fas fa-cube"></i>
+				<span className="ml-1">Available Products</span>
+			</p>
 		</div>
 	);
 };
