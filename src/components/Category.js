@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Category = ({ category, setCategories, numOfCategories }) => {
+const Category = ({ category, setCategories, numOfCategories, categories }) => {
+	const removeCategory = (index) => {
+		const newCategories = categories.filter(
+			(category) => category.index !== index
+		);
+
+		setCategories(newCategories);
+	};
+
 	return (
 		<div className="info-container">
 			<div className="category-title">
@@ -36,6 +44,7 @@ const Category = ({ category, setCategories, numOfCategories }) => {
 				</div>
 				<div className="category-actions">
 					<button
+						onClick={() => removeCategory(category.index)}
 						className={numOfCategories === 1 ? 'btn btn-disabled' : 'btn'}
 					>
 						Remove Category

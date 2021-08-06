@@ -20,6 +20,7 @@ const Categories = ({ categories, setCategories }) => {
 					key={category.index}
 					category={category}
 					setCategories={setCategories}
+					categories={categories}
 					numOfCategories={categories.length}
 				/>
 			))}
