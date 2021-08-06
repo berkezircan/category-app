@@ -1,7 +1,12 @@
 import React from 'react';
 import Category from '../components/Category';
 
-const Categories = ({ categories, setCategories }) => {
+const Categories = ({
+	categories,
+	setCategories,
+	selectedProducts,
+	setSelectedProducts,
+}) => {
 	const addNewCategory = () => {
 		const lastCategoryIndex = categories[categories.length - 1].index + 1;
 		const categoryName = `Category ${lastCategoryIndex + 1}`;
@@ -22,6 +27,8 @@ const Categories = ({ categories, setCategories }) => {
 					setCategories={setCategories}
 					categories={categories}
 					numOfCategories={categories.length}
+					numOfSelectedProducts={selectedProducts.length}
+					setSelectedProducts={setSelectedProducts}
 				/>
 			))}
 

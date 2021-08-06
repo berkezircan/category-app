@@ -74,7 +74,12 @@ function App() {
 				<Review />
 			</div>
 			<div className="sub-container">
-				<Categories categories={categories} setCategories={setCategories} />
+				<Categories
+					selectedProducts={selectedProducts}
+					setSelectedProducts={setSelectedProducts}
+					categories={categories}
+					setCategories={setCategories}
+				/>
 			</div>
 		</div>
 	);

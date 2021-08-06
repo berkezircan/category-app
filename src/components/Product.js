@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 
-const Product = ({ product }) => {
+const Product = ({ product, setSelectedProducts, selectedProducts }) => {
 	const [checked, setChecked] = useState(false);
 
 	const handleChange = (event) => {
 		setChecked(!checked);
+
+		if (!checked) {
+			setSelectedProducts([...selectedProducts, product.name]);
+		} else {
+			var newSelectedProducts = selectedProducts.filter(
+				(currentProduct) => currentProduct !== product.name
+			);
+			setSelectedProducts(newSelectedProducts);
+		}
 	};
 
 	return (
@@ -16,7 +25,7 @@ const Product = ({ product }) => {
 				checked={checked}
 				onChange={(event) => handleChange(event)}
 			/>
-			<label htmlFor="123" className="ml-1">
+			<label htmlFor={product.name} className="ml-1">
 				{product.name}
 			</label>
 		</div>

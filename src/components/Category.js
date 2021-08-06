@@ -1,6 +1,12 @@
 import React from 'react';
 
-const Category = ({ category, setCategories, numOfCategories, categories }) => {
+const Category = ({
+	category,
+	setCategories,
+	numOfCategories,
+	categories,
+	numOfSelectedProducts,
+}) => {
 	const removeCategory = (index) => {
 		const newCategories = categories.filter(
 			(category) => category.index !== index
@@ -30,9 +36,11 @@ const Category = ({ category, setCategories, numOfCategories, categories }) => {
 			<div className="actions my-1">
 				<div className="product-actions">
 					<button
-						className={numOfCategories === 1 ? 'btn btn-disabled' : 'btn'}
+						className={numOfSelectedProducts === 0 ? 'btn btn-disabled' : 'btn'}
 					>
-						Add Products
+						{numOfSelectedProducts > 0
+							? `Add ${numOfSelectedProducts} Products`
+							: `Add Products`}
 					</button>
 					<button
 						className={

@@ -1,5 +1,4 @@
 import React from 'react';
-import CategoryItem from '../components/CategoryItem';
 import Product from '../components/Product';
 
 const AvailableProducts = ({
@@ -15,7 +14,13 @@ const AvailableProducts = ({
 				<span className="ml-1">Available Products</span>
 			</p>
 			{products.map((product) => (
-				<Product key={product.name} product={product} />
+				<Product
+					key={product.name}
+					selectedProducts={selectedProducts}
+					setProducts={setProducts}
+					setSelectedProducts={setSelectedProducts}
+					product={product}
+				/>
 			))}
 		</div>
 	);
