@@ -13,15 +13,18 @@ const AvailableProducts = ({
 				<i className="fas fa-cube"></i>
 				<span className="ml-1">Available Products</span>
 			</p>
-			{products.map((product) => (
-				<Product
-					key={product.name}
-					selectedProducts={selectedProducts}
-					setProducts={setProducts}
-					setSelectedProducts={setSelectedProducts}
-					product={product}
-				/>
-			))}
+			{products.map(
+				(product) =>
+					!product.category && (
+						<Product
+							key={product.name}
+							selectedProducts={selectedProducts}
+							setProducts={setProducts}
+							setSelectedProducts={setSelectedProducts}
+							product={product}
+						/>
+					)
+			)}
 		</div>
 	);
 };

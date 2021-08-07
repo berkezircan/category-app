@@ -14,6 +14,7 @@ function App() {
 		{
 			name: 'Category 1',
 			index: 0,
+			products: [],
 		},
 	]);
 
@@ -79,6 +80,8 @@ function App() {
 					setSelectedProducts={setSelectedProducts}
 					categories={categories}
 					setCategories={setCategories}
+					setProducts={setProducts}
+					products={products}
 				/>
 			</div>
 		</div>

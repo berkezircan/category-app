@@ -6,13 +6,19 @@ const Categories = ({
 	setCategories,
 	selectedProducts,
 	setSelectedProducts,
+	setProducts,
+	products,
 }) => {
 	const addNewCategory = () => {
 		const lastCategoryIndex = categories[categories.length - 1].index + 1;
 		const categoryName = `Category ${lastCategoryIndex + 1}`;
 		const newCategories = [
 			...categories,
-			{ name: categoryName, index: lastCategoryIndex },
+			{
+				name: categoryName,
+				index: lastCategoryIndex,
+				products: [],
+			},
 		];
 
 		setCategories(newCategories);
@@ -26,9 +32,12 @@ const Categories = ({
 					category={category}
 					setCategories={setCategories}
 					categories={categories}
+					selectedProducts={selectedProducts}
 					numOfCategories={categories.length}
 					numOfSelectedProducts={selectedProducts.length}
 					setSelectedProducts={setSelectedProducts}
+					products={products}
+					setProducts={setProducts}
 				/>
 			))}
 

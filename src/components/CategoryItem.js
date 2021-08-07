@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
 
-const CategoryItem = () => {
+const CategoryItem = ({ product }) => {
 	const [checked, setChecked] = useState(false);
 
 	const handleChange = (event) => {
 		setChecked(!checked);
 	};
 
+	console.log(product);
+
 	return (
 		<div className="form-control">
 			<input
 				type="checkbox"
-				name="123"
-				value="123"
+				name={product}
+				value={product}
 				checked={checked}
 				onChange={(event) => handleChange(event)}
 			/>
-			<label htmlFor="123" className="ml-1">
-				123
+			<label htmlFor={product} className="ml-1">
+				{product}
 			</label>
 		</div>
 	);
