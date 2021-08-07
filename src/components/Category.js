@@ -25,8 +25,6 @@ const Category = ({
 			}
 		});
 
-		console.log(newProducts);
-
 		setProducts(newProducts);
 		setCategories(newCategories);
 	};
