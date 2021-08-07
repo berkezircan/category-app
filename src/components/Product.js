@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
 
-const Product = ({ product, setSelectedProducts, selectedProducts }) => {
+const Product = ({
+	productName,
+	setSelectedProducts,
+	selectedProducts,
+	categories,
+}) => {
 	const [checked, setChecked] = useState(false);
 
 	const handleChange = (event) => {
 		setChecked(!checked);
 
-		if (!checked) {
-			setSelectedProducts([...selectedProducts, product.name]);
+		if (event.target.checked) {
+			setSelectedProducts([...selectedProducts, productName]);
 		} else {
 			var newSelectedProducts = selectedProducts.filter(
-				(currentProduct) => currentProduct !== product.name
+				(currentProduct) => currentProduct !== productName
 			);
 			setSelectedProducts(newSelectedProducts);
 		}
@@ -20,13 +25,13 @@ const Product = ({ product, setSelectedProducts, selectedProducts }) => {
 		<div className="form-control">
 			<input
 				type="checkbox"
-				name={product.name}
-				value={product.name}
+				name={productName}
+				value={productName}
 				checked={checked}
 				onChange={(event) => handleChange(event)}
 			/>
-			<label htmlFor={product.name} className="ml-1">
-				{product.name}
+			<label htmlFor={productName} className="ml-1">
+				{productName}
 			</label>
 		</div>
 	);

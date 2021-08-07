@@ -4,7 +4,6 @@ import Product from '../components/Product';
 const AvailableProducts = ({
 	products,
 	selectedProducts,
-	setProducts,
 	setSelectedProducts,
 }) => {
 	return (
@@ -19,9 +18,8 @@ const AvailableProducts = ({
 						<Product
 							key={product.name}
 							selectedProducts={selectedProducts}
-							setProducts={setProducts}
 							setSelectedProducts={setSelectedProducts}
-							product={product}
+							productName={product.name}
 						/>
 					)
 			)}

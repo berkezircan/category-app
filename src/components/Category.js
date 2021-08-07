@@ -1,33 +1,66 @@
 import React from 'react';
-import CategoryItem from './CategoryItem';
+
+import Product from './Product';
 
 const Category = ({
 	category,
 	setCategories,
 	numOfCategories,
 	categories,
-	numOfSelectedProducts,
 	setSelectedProducts,
 	products,
 	setProducts,
 	selectedProducts,
 }) => {
 	const removeCategory = (index) => {
+		const newProducts = [...products];
 		const newCategories = categories.filter(
 			(category) => category.index !== index
 		);
+		const categoryName = category.name;
 
+		newProducts.forEach((product) => {
+			if (product.category === categoryName) {
+				product.category = '';
+			}
+		});
+
+		console.log(newProducts);
+
+		setProducts(newProducts);
 		setCategories(newCategories);
 	};
+
+	const removeProduct = () => {
+		// TODO: remove product finalized
+	};
+
+	const selectedProductsWithOutCategory = () => {
+		return products
+			.filter(
+				(product) =>
+					!product.category && selectedProducts.includes(product.name)
+			)
+			.map((product) => product.name);
+	};
+
+	const filterSelectedCategoryProducts = () =>
+		category.products.filter((product) => selectedProducts.includes(product));
 
 	const handleAddProducts = () => {
 		let newProducts = products;
 		let newCategories = categories;
 
-		category.products = [...category.products, ...selectedProducts];
+		category.products = [
+			...category.products,
+			...selectedProductsWithOutCategory(),
+		];
 
 		newProducts.forEach((product) => {
-			if (selectedProducts.indexOf(product.name) > -1) {
+			if (
+				selectedProducts.indexOf(product.name) > -1 &&
+				product.category === ''
+			) {
 				product.category = category.name;
 			}
 		});
@@ -55,7 +88,13 @@ const Category = ({
 				</div>
 			) : (
 				category.products.map((product) => (
-					<CategoryItem key={product} product={product} />
+					<Product
+						key={product}
+						productName={product}
+						selectedProducts={selectedProducts}
+						setSelectedProducts={setSelectedProducts}
+						categories={categories}
+					/>
 				))
 			)}
 
@@ -63,15 +102,22 @@ const Category = ({
 				<div className="product-actions">
 					<button
 						onClick={handleAddProducts}
-						className={numOfSelectedProducts === 0 ? 'btn btn-disabled' : 'btn'}
+						className={
+							selectedProductsWithOutCategory().length === 0
+								? 'btn btn-disabled'
+								: 'btn'
+						}
 					>
-						{numOfSelectedProducts > 0
-							? `Add ${numOfSelectedProducts} Products`
+						{selectedProductsWithOutCategory().length > 0
+							? `Add ${selectedProductsWithOutCategory().length} Products`
 							: `Add Products`}
 					</button>
 					<button
+						onClick={removeProduct}
 						className={
-							numOfCategories === 1 ? 'btn btn-disabled ml-1' : 'btn ml-1'
+							filterSelectedCategoryProducts().length === 0
+								? 'btn btn-disabled ml-1'
+								: 'btn ml-1'
 						}
 					>
 						Remove Products
