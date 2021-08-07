@@ -63,6 +63,9 @@ function App() {
 
 	const [selectedProducts, setSelectedProducts] = useState([]);
 
+	const availableProductsCount = () =>
+		products.filter((product) => product.category === '').length;
+
 	return (
 		<div className="App container">
 			<div className="sub-container">
@@ -72,7 +75,10 @@ function App() {
 					setProducts={setProducts}
 					setSelectedProducts={setSelectedProducts}
 				/>
-				<Review />
+				<Review
+					availableProductsCount={availableProductsCount}
+					categories={categories}
+				/>
 			</div>
 			<div className="sub-container">
 				<Categories

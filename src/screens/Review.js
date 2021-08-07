@@ -1,21 +1,23 @@
 import React from 'react';
 
-const Review = () => {
+import ReviewItem from '../components/ReviewItem';
+import CategoryStats from '../components/CategoryStats';
+
+const Review = ({ categories, availableProductsCount }) => {
+	const productCount = availableProductsCount();
 	return (
 		<div className="info-container border-primary">
 			<p className="text-primary">
 				<i className="far fa-save" />
 				<span className="ml-1">Review</span>
 			</p>
-			<div className="py-1">
-				<p>Available Products: 5</p>
-				<p>Categories: 2</p>
-			</div>
-
-			<div className="py-1">
-				<p>Category 1: 3 products</p>
-				<p>Category 2: 2 products</p>
-			</div>
+			<CategoryStats
+				availableProductsCount={productCount}
+				categoryCount={categories.length}
+			/>
+			{categories.map((category) => {
+				return <ReviewItem key={category.name} category={category} />;
+			})}
 		</div>
 	);
 };

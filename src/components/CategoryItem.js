@@ -7,8 +7,6 @@ const CategoryItem = ({ product }) => {
 		setChecked(!checked);
 	};
 
-	console.log(product);
-
 	return (
 		<div className="form-control">
 			<input
