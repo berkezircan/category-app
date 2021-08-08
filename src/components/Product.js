@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
 
-const Product = ({
-	productName,
-	setSelectedProducts,
-	selectedProducts,
-	categories,
-}) => {
+const Product = ({ productName, setSelectedProducts, selectedProducts }) => {
 	const [checked, setChecked] = useState(false);
 
 	const handleChange = (event) => {

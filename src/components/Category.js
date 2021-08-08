@@ -30,8 +30,40 @@ const Category = ({
 	};
 
 	const removeProduct = () => {
-		// TODO: remove product finalized
+		const newProducts = [...products];
+		let newCategories = [...categories];
+
+		const deletedProducts = selectedProductsWithCategory(
+			selectedProducts,
+			category.products
+		);
+
+		newProducts.map((product) => {
+			if (deletedProducts.includes(product.name)) {
+				product.category = '';
+			}
+
+			return product;
+		});
+
+		newCategories.map((newCategory) => {
+			if (newCategory.name === category.name) {
+				newCategory.products = newCategory.products.filter(function (el) {
+					return deletedProducts.indexOf(el) < 0;
+				});
+			}
+			return newCategory;
+		});
+
+		setProducts(deletedProducts);
+
+		setProducts(newProducts);
+
+		setSelectedProducts([]);
 	};
+
+	const selectedProductsWithCategory = (products, categoryProducts) =>
+		products.filter((product) => categoryProducts.includes(product));
 
 	const selectedProductsWithOutCategory = () => {
 		return products
