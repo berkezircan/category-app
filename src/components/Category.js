@@ -59,33 +59,10 @@ const Category = ({
 
 		setProducts(newProducts);
 
-		resetSelectedProducts(deletedProducts);
+		resetSelectedRemovedProducts(deletedProducts);
 	};
 
-	const resetSelectedProducts = (targetProducts) => {
-		const newSelectedProducts = selectedProducts.filter(
-			(product) => !targetProducts.includes(product)
-		);
-
-		setSelectedProducts(newSelectedProducts);
-	};
-
-	const selectedProductsWithCategory = (products, categoryProducts) =>
-		products.filter((product) => categoryProducts.includes(product));
-
-	const selectedProductsWithOutCategory = () => {
-		return products
-			.filter(
-				(product) =>
-					!product.category && selectedProducts.includes(product.name)
-			)
-			.map((product) => product.name);
-	};
-
-	const filterSelectedCategoryProducts = () =>
-		category.products.filter((product) => selectedProducts.includes(product));
-
-	const handleAddProducts = () => {
+	const addProducts = () => {
 		let newProducts = products;
 		let newCategories = categories;
 
@@ -107,8 +84,39 @@ const Category = ({
 
 		setCategories(newCategories);
 
-		setSelectedProducts([]);
+		resetSelectedAddProducts(selectedProductsWithOutCategory());
 	};
+
+	const resetSelectedRemovedProducts = (targetProducts) => {
+		const newSelectedProducts = selectedProducts.filter(
+			(product) => !targetProducts.includes(product)
+		);
+
+		setSelectedProducts(newSelectedProducts);
+	};
+
+	const resetSelectedAddProducts = (targetProducts) => {
+		const newSelectedProducts = selectedProducts.filter((product) =>
+			targetProducts.includes(product)
+		);
+
+		setSelectedProducts(newSelectedProducts);
+	};
+
+	const selectedProductsWithCategory = (products, categoryProducts) =>
+		products.filter((product) => categoryProducts.includes(product));
+
+	const selectedProductsWithOutCategory = () => {
+		return products
+			.filter(
+				(product) =>
+					!product.category && selectedProducts.includes(product.name)
+			)
+			.map((product) => product.name);
+	};
+
+	const filterSelectedCategoryProducts = () =>
+		category.products.filter((product) => selectedProducts.includes(product));
 
 	return (
 		<div className="info-container">
@@ -139,7 +147,7 @@ const Category = ({
 			<div className="actions my-1">
 				<div className="product-actions">
 					<button
-						onClick={handleAddProducts}
+						onClick={addProducts}
 						className={
 							selectedProductsWithOutCategory().length === 0
 								? 'btn btn-disabled'
