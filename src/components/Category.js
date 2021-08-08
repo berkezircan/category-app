@@ -48,9 +48,9 @@ const Category = ({
 
 		newCategories.map((newCategory) => {
 			if (newCategory.name === category.name) {
-				newCategory.products = newCategory.products.filter(function (el) {
-					return deletedProducts.indexOf(el) < 0;
-				});
+				newCategory.products = newCategory.products.filter(
+					(el) => deletedProducts.indexOf(el) < 0
+				);
 			}
 			return newCategory;
 		});
@@ -59,7 +59,15 @@ const Category = ({
 
 		setProducts(newProducts);
 
-		setSelectedProducts([]);
+		resetSelectedProducts(deletedProducts);
+	};
+
+	const resetSelectedProducts = (targetProducts) => {
+		const newSelectedProducts = selectedProducts.filter(
+			(product) => !targetProducts.includes(product)
+		);
+
+		setSelectedProducts(newSelectedProducts);
 	};
 
 	const selectedProductsWithCategory = (products, categoryProducts) =>
