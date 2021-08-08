@@ -59,7 +59,7 @@ const Category = ({
 
 		setProducts(newProducts);
 
-		resetSelectedRemovedProducts(deletedProducts);
+		resetSelectedProducts(deletedProducts);
 	};
 
 	const addProducts = () => {
@@ -71,12 +71,15 @@ const Category = ({
 			...selectedProductsWithOutCategory(),
 		];
 
+		let targetProducts = [];
+
 		newProducts.forEach((product) => {
 			if (
 				selectedProducts.indexOf(product.name) > -1 &&
 				product.category === ''
 			) {
 				product.category = category.name;
+				targetProducts.push(product.name);
 			}
 		});
 
@@ -84,20 +87,12 @@ const Category = ({
 
 		setCategories(newCategories);
 
-		resetSelectedAddProducts(selectedProductsWithOutCategory());
+		resetSelectedProducts(targetProducts);
 	};
 
-	const resetSelectedRemovedProducts = (targetProducts) => {
+	const resetSelectedProducts = (targetProducts) => {
 		const newSelectedProducts = selectedProducts.filter(
 			(product) => !targetProducts.includes(product)
-		);
-
-		setSelectedProducts(newSelectedProducts);
-	};
-
-	const resetSelectedAddProducts = (targetProducts) => {
-		const newSelectedProducts = selectedProducts.filter((product) =>
-			targetProducts.includes(product)
 		);
 
 		setSelectedProducts(newSelectedProducts);
